@@ -8,7 +8,7 @@ const NewsList = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [originalNews, setOriginalNews] = useState([]);
-
+  
   useEffect(() => {
     console.time("thời gian tải list: ");
     const fetchNews = async () => {
@@ -34,8 +34,9 @@ const NewsList = () => {
       return;
     }
     const filteredNews = originalNews.filter(item =>
+      item.ID.toString().toLowerCase().includes(searchTerm.toLowerCase()) ||
       item.Title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      item.Description.toLowerCase().includes(searchTerm.toLowerCase())
+      item.Description.toLowerCase().includes(searchTerm.toLowerCase()) 
     );
     setNews(filteredNews);
   };
@@ -48,6 +49,7 @@ const NewsList = () => {
     <div>
       <SearchBar onSearch={handleSearch} /> 
       <ul>
+      {console.log(news)}
         {news.map((item) => (
           <li key={item.ID}>
             <Link to={`/news/${item.ID}`} style={{ textDecoration: 'none', color: 'inherit' }}>

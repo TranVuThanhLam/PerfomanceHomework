@@ -2,7 +2,6 @@ fetch('http://localhost:5000', { mode: 'no-cors' })
   .then(response => response.json())
   .then(data => {
     // Xử lý dữ liệu nhận được
-    console.log(data);
     // Hiển thị dữ liệu lên trang web
     const newsList = document.getElementById('news-list');
     data.forEach(news => {
