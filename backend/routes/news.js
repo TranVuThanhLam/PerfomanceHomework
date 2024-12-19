@@ -14,7 +14,7 @@ const executeQuery = async (req, res, query) => {
 // Route lấy tất cả tin tức
 router.get('/', async (req, res) => {
   try {
-    const query = 'SELECT ID, Title, Description FROM news';
+    const query = 'SELECT ID, Title, Description, Content FROM news';
     await executeQuery(req, res, query);
   } catch (error) {
     // Lỗi đã được xử lý trong executeQuery
